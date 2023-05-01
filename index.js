@@ -48,6 +48,11 @@ app.use((err, req, res, next) => {
 // client is connected from here
 app.use(express.static("client/build"));
 import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"))
 })
