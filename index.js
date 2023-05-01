@@ -29,10 +29,10 @@ app.use(cors())
 app.use(cookieParser())
 app.use(express.json());
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
-app.use("/api/hotels", hotelsRoute);
-app.use("/api/rooms", roomsRoute);
+app.use("/auth", authRoute);
+app.use("/users", usersRoute);
+app.use("/hotels", hotelsRoute);
+app.use("rooms", roomsRoute);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
@@ -44,6 +44,13 @@ app.use((err, req, res, next) => {
     stack: err.stack,
   });
 });
+
+// client is connected from here
+app.use(express.static("client/build"));
+import path from "path";
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+})
 
 app.listen(8800, () => {
   connect();
