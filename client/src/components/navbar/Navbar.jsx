@@ -24,8 +24,7 @@ const Navbar = (props) => {
             <button onClick={handleClick} className="navButton">Login</button>
           </div>)}
       </div>
-    </div>
-    {props.type==="list"&&<center><b><h4>You can choose destination only between mumbai,pune or satara.type destination in lowercase letters only.</h4></b></center>}  
+    </div> 
     </>
   );
 };

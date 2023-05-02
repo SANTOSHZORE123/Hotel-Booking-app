@@ -94,7 +94,6 @@ const Header = ({ type }) => {
               more with a free SantoshBooking account
             </p>
             {!user && <button className="headerBtn">Sign in / Register</button>}
-            <b><h3 style={{color:"white"}}>You can choose destination only between mumbai,pune or satara.type destination in lowercase only.</h3></b>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

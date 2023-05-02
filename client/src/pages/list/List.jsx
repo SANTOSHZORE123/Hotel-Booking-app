@@ -117,7 +117,7 @@ return number;
               "loading"
             ) : (
               <>
-                {data.map((item) => (
+                {data.length===0?(<b><h3 style={{color:"white"}}>Requested Destination Hotels are not yet Registered kindly chose Destination between satara ,pune or mumbai.</h3></b>):data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
               </>
