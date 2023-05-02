@@ -36,6 +36,7 @@ return number;
   return (
     <div>
       <Navbar />
+      <h3><b>You can choose destination only between mumbai,pune or satara.type destination in lowercase only.</b></h3>
       <Header type="list" />
       <div className="listContainer">
         <div className="listWrapper">
@@ -118,7 +119,7 @@ return number;
               "loading"
             ) : (
               <>
-                {sizecal(data)===0?("No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"):data.map((item) => (
+                {data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
               </>
