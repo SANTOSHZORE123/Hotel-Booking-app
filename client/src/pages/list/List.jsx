@@ -20,7 +20,13 @@ const List = () => {
   const { data, loading, error, reFetch } = useFetch(
     `/hotels?city=${destination.toLowerCase()}&min=${min|| 1 }&max=${max||999}`
   );
-
+const sizecal=(data)=>{
+const number=0;
+data.map((items)=>{
+  number+=1;
+})
+return number;
+}
   const handleClick = () => {
     console.log(min,max)
     reFetch();
@@ -111,7 +117,7 @@ const List = () => {
               "loading"
             ) : (
               <>
-                {data.length?("No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"):data.map((item) => (
+                {sizecal(data)===0?("No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"):data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
               </>
