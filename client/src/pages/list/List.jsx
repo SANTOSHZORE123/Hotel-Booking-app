@@ -25,6 +25,7 @@ const number=0;
 data.map((items)=>{
   number+=1;
 })
+console.log(number);
 return number;
 }
   const handleClick = () => {
