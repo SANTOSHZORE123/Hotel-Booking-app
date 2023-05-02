@@ -10,7 +10,7 @@ import useFetch from "../../hooks/useFetch";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
+  const [destination, setDestination] = useState(location.state.destination.toLowerCase());
   const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
@@ -36,7 +36,7 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} onChange={(e) => setDestination(e.target.value)}type="text" />
+              <input placeholder={destination} onChange={(e) => setDestination(e.target.value.toLowerCase())}type="text" />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -111,10 +111,9 @@ const List = () => {
               "loading"
             ) : (
               <>
-                {data.map((item) => (
+                {data.length===0?("No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"):data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
-                {data.length()==0&& "No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"}
               </>
             )}
           </div>
