@@ -83,6 +83,7 @@ const Header = ({ type }) => {
             <span>Airport taxis</span>
           </div>
         </div>
+
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
@@ -93,7 +94,7 @@ const Header = ({ type }) => {
               more with a free SantoshBooking account
             </p>
             {!user && <button className="headerBtn">Sign in / Register</button>}
-            <h3><b>You can choose destination only between mumbai,pune or satara.type destination in lowercase only.</b></h3>
+            <b><h3 style={{color:"white"}}>You can choose destination only between mumbai,pune or satara.type destination in lowercase only.</h3></b>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

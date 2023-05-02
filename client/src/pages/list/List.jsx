@@ -35,9 +35,7 @@ return number;
 
   return (
     <div>
-      <Navbar />
-      <h3><b>You can choose destination only between mumbai,pune or satara.type destination in lowercase only.</b></h3>
-      <Header type="list" />
+      <Navbar type="list"/>
       <div className="listContainer">
         <div className="listWrapper">
           <div className="listSearch">
