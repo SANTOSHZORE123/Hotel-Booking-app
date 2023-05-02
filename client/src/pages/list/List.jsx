@@ -111,7 +111,7 @@ const List = () => {
               "loading"
             ) : (
               <>
-                {data.length===0?("No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"):data.map((item) => (
+                {data.length?("No hotels are registered for the given requested destination.you can choose destination between PUNE, SATARA, MUMBAI"):data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
               </>
