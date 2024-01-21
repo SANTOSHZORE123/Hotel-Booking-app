@@ -7,16 +7,17 @@ export const register = async (req, res, next) => {
   try {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
-
+    const {username,isAdmin}=req.body
     const newUser = new User({
       ...req.body,
       password: hash,
     });
 
     await newUser.save();
-    res.status(200).send("User has been created.");
+    res.status(200).json({ username,isAdmin});
   } catch (err) {
-    next(err);
+    console.log(err)
+    res.status(400).send(createError(400,"user not registered"))
   }
 };
 export const login = async (req, res, next) => {
@@ -36,13 +37,13 @@ export const login = async (req, res, next) => {
       process.env.JWT
     );
 
-    const { password, isAdmin, ...otherDetails } = user._doc;
+    const { password, isAdmin, username } = user._doc;
     res
       .cookie("access_token", token, {
         httpOnly: true,
       })
       .status(200)
-      .json({ details: { ...otherDetails }, isAdmin });
+      .json({ username,isAdmin});
   } catch (err) {
     next(err);
   }

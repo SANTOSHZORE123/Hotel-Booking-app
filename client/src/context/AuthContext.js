@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   loading: false,
   error: null,
+  isAdmin:false
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -15,24 +16,28 @@ const AuthReducer = (state, action) => {
         user: null,
         loading: true,
         error: null,
+        isAdmin:false
       };
     case "LOGIN_SUCCESS":
       return {
-        user: action.payload,
+        user: action.payload.username,
         loading: false,
         error: null,
+        isAdmin:action.payload.isAdmin=="NO"?false:true
       };
     case "LOGIN_FAILURE":
       return {
         user: null,
         loading: false,
         error: action.payload,
+        isAdmin:false
       };
     case "LOGOUT":
       return {
         user: null,
         loading: false,
         error: null,
+        isAdmin:false
       };
     default:
       return state;
@@ -53,6 +58,7 @@ export const AuthContextProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         dispatch,
+        isAdmin:state.isAdmin
       }}
     >
       {children}

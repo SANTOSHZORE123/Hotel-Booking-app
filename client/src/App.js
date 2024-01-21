@@ -7,6 +7,8 @@ import Home from "./pages/home/Home";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
 import Login from "./pages/login/Login";
+import SignUp from "./pages/signup/signup";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/hotels" element={<List/>}/>
         <Route path="/hotels/:id" element={<Hotel/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/adminpanel" element={<Admin/>}/>
       </Routes>
     </BrowserRouter>
   );
