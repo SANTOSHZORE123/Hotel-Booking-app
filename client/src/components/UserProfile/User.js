@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./User.css"
 const User = ({user,logout,isAdmin}) => {
+
   const navigate = useNavigate();
 
   const logoutHanlder=()=>{

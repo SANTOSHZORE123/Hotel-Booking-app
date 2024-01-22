@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthContext";
 import UserProfile from "../UserProfile/User"
 const Navbar = (props) => {
   const { user ,dispatch,isAdmin} = useContext(AuthContext);
+  console.log(user)
   const navigate = useNavigate();
   const handleLoginClick = () => {
    
