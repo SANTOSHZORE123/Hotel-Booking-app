@@ -67,11 +67,7 @@ export const getRegistration = async (req, res, next) => {
   export const UpdateRegistration=async(req,res,next)=>{
     try {
       // Find the hotel registration entry based on the provided criteria
-      const existingRegistration = await Registration.findOne({
-          username: req.body.username,
-          Hotel: req.body.Hotel,
-          room: req.body.room
-      });
+      const existingRegistration = await Registration.findById(req.body.RegisId);
 
 
       

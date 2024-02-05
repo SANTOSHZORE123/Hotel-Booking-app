@@ -16,9 +16,16 @@ const UserRegistration = (props) => {
   const [isloading, setIsloading] = useState(false)
   const [Delete, setDeleteError] = useState({ message: "", flg: false })
   const { user } = useContext(AuthContext)
+  const [mainId,setMainId]=useState(0)
   const [pdfBlob, setPdfBlob] = useState(null);
 
   const [pdfDownload,setdownload]=useState(false)
+
+  const clickModalOpener=(id)=>{
+    setMainId(id)
+    setIsModalOpen(true)
+  }
+
 
   const fetchDataAndGeneratePDF = async (id) => {
     setdownload(true)
@@ -208,7 +215,7 @@ const UserRegistration = (props) => {
         <td>{props.Payment.toFixed(2)}</td>
         <td>{props.Location}</td>
         <td>
-          <button onClick={(e)=>setIsModalOpen(true)}>
+          <button onClick={()=>clickModalOpener(props._id)}>
             <div className="icon">Update</div>
           </button>
         </td>
@@ -235,7 +242,7 @@ const UserRegistration = (props) => {
               console.log(updatedData)
               // Handle the updated data (e.g., send it to the server)
               try {
-                const res = await axios.post("/registrations/update", {username:user,...updatedData});
+                const res = await axios.post("/registrations/update", {username:user,...updatedData,RegisId:mainId});
                 console.log(res)
                 setIsloading(false)
                 setUpdateError("Reg.ID "+props.index+": "+res.data.message)
