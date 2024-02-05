@@ -73,9 +73,9 @@ const UserPanel = () => {
     },[])
 
 
-    const clickHandler=(id)=>{
-      setIsDeleteOpen({ isopen: true, id: id })
-      console.log(id);
+    const clickHandler=(id,username)=>{
+      setIsDeleteOpen({ isopen: true, id: id,username:username })
+      console.log(id,username);
     }
 
   return <>
@@ -142,7 +142,7 @@ const UserPanel = () => {
             <h3>Are You want to delete?</h3>
         <div className="actions">
             <button onClick={()=>setIsDeleteOpen({isopen:false,id:0})} className="submit">Cancel</button>
-            <button onClick={()=>handleSubmit(OpenModal.id,)} className="submit">Ok</button>
+            <button onClick={()=>handleSubmit(OpenModal.id,OpenModal.username)} className="submit">Ok</button>
         </div>
             </div>
             </Modal>}
