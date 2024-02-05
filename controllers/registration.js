@@ -5,6 +5,17 @@ import mongoose from "mongoose"
 
 import Hotel from "../models/Hotel.js"
 import User from "../models/User.js";
+function formatDate(date) {
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0'); // Month is zero-based
+  const year = d.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
+
+
+
 
 const findActual=(dates)=>{
 const actualDates=dates.map((milliseconds)=>{
@@ -214,8 +225,8 @@ async function getRegistrationCount(req, res) {
     for (let i = 14; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
-      dates.push(date.toLocaleDateString());
-      const registrationsCount = await Registration.countDocuments({ createdTime: date.toLocaleDateString() });
+      dates.push(formatDate(date.getTime()));
+      const registrationsCount = await Registration.countDocuments({ createdTime: formatDate(date.getTime()) });
       registrations.push(registrationsCount);
     }
 console.log("this is data",{ dates, registrations })
@@ -240,7 +251,7 @@ export const getReceiptCount = async (req, res, next) => {
       if (!regis) {
           return res.status(404).json({ error: "Registration not found" });
       }
-
+        console.log("this is stay",regis.stayDuration)
       const fetchedData = {
           numRooms: 1,
           grandTotal: regis.Payment,
@@ -248,8 +259,8 @@ export const getReceiptCount = async (req, res, next) => {
           finalAmount: regis.Payment - (regis.Payment * 2) / 100,
           status: "Pending...",
           bookedAt: regis.createdTime,
-          checkInDate: new Date(regis.stayDuration[0]).toLocaleDateString(),
-          checkOutDate: new Date(regis.stayDuration[regis.stayDuration.length - 1]).toLocaleDateString()
+          checkInDate : formatDate(regis.stayDuration[0]),
+          checkOutDate : formatDate(regis.stayDuration[regis.stayDuration.length - 1])
       };
 
       const rooms = await Room.findById(regis.room_id);
