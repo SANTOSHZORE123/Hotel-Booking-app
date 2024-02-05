@@ -6,7 +6,7 @@ import Modal from "../../components/UpdateModal/Modal"
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 const UserPanel = () => {
-    const {authusername,dispatch,isAdmin} = useContext(AuthContext);
+    const {user,dispatch,isAdmin} = useContext(AuthContext);
     const [data,setData]=useState([])
     const navigate=useNavigate()
     const [OpenModal,setIsDeleteOpen]=useState({
@@ -37,12 +37,12 @@ const UserPanel = () => {
         setIsDeleteOpen({isopen:false,id:0,username:0})
     }
 
-    const handleSubmit=async(id,user)=>{
-      console.log("this is actual names",user,authusername)
+    const handleSubmit=async(id,username)=>{
+      console.log("this is actual names",username,user)
         setloading(true)
         try{
             const res=await axios.delete(`/users/${id}`)
-            if(user===authusername){
+            if(user===username){
               dispatch({type:"LOGOUT"})
             }
             setloading(false)
