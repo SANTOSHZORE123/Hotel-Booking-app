@@ -32,6 +32,7 @@ const Navbar = (props) => {
 
   const logout=()=>{
     dispatch({type:"LOGOUT"})
+    navigate("/login")
   }
 
 
@@ -46,7 +47,7 @@ const Navbar = (props) => {
           <img src="/hotel.jpg" style={{width:"110px",height:"70px",backgroundColor:"green",
           border:"1px solid black",borderRadius:"10px",boxShadow:"rgba(0, 0, 0, 0.1) -5px 3px 0px"}}/>
         </Link>
-              <div className="headerListItem active" onClick={()=>statHandler()}>
+              <div className="headerListItem active" onClick={()=>statHandler()} style={{cursor:"pointer"}}>
               <FontAwesomeIcon icon={faBed} />
                 <span>Stats</span>
               </div>

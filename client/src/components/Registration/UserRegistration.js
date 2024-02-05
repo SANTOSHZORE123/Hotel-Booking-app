@@ -213,7 +213,6 @@ const UserRegistration = (props) => {
         </td>
         <td>
           <button className="blow-up-button" onClick={(e)=>setIsDeleteOpen({isopen:true,eventVar:e})}>
-            <div className="icon">&#128065;</div>
           </button>
         </td>
 

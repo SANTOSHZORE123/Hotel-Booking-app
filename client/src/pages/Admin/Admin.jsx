@@ -56,16 +56,16 @@ const Admin = () => {
             <p style={{textAlign:"center"}}>Welcome, {user}!</p>
             <h4 style={{ marginTop: "15px" }}>Admin Panel</h4>
             <div className='admin-container'>
-              <div onClick={(e)=>HandleClick(e)} value="User">
+              <div onClick={(e)=>HandleClick(e)} value="User" style={{cursor:"pointer"}}>
                 <img src="/photo.jpg" className='ima' /><h5 onClick={HandleClick}>User Profiles</h5><br />
               </div>
-              <div onClick={(e)=>HandleClick(e)} value="Hotel">
+              <div onClick={(e)=>HandleClick(e)} value="Hotel" style={{cursor:"pointer"}}>
                 <img src="/Profile.jpg" className='ima' /><h5>Hotel Management</h5><br />
               </div>
-              <div onClick={(e)=>HandleClick(e)} value="Room">
+              <div onClick={(e)=>HandleClick(e)} value="Room" style={{cursor:"pointer"}}>
                 <img src="/Profile.jpg" className='ima' /><h5>Rooms Management</h5><br />
               </div>
-              <div onClick={(e)=>HandleClick(e)} value="Reservations">
+              <div onClick={(e)=>HandleClick(e)} value="Reservations" style={{cursor:"pointer"}}>
                 <img src="/Profile.jpg" className='ima' /><h5>Reservation Stats</h5><br />
               </div>
             </div>

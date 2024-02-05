@@ -95,7 +95,6 @@ const HotelPanel = () => {
           </td>
           <td>
             <button className="blow-up-button" onClick={() => setIsDeleteOpen({ isopen: true, id: item._id })}>
-              <div className="icon">&#128065;</div>
             </button>
           </td>
           {view&&<Modal onClose={()=>setView(false)}>

@@ -42,7 +42,7 @@
   position: absolute;
   bottom: -25px;
   width: 100%;
-  max-width: 75vw;
+  max-width: 77vw;
 }
 
 .headerIcon {
@@ -58,13 +58,11 @@
 .headerSearchInput {
   border: none;
   outline: none;
-  font-size:1vw;
 }
 
 .headerSearchText {
   color: lightgray;
   cursor: pointer;
-  font-size:1vw;
 }
 
 .date {
@@ -110,4 +108,51 @@
 
 .optionCounterButton:disabled {
   cursor: not-allowed;
+}
+
+
+@media screen and (min-width:671px) {
+  .headerSearchInput{
+    font-size: 1vw;
+  }
+  .headerSearchText{
+    font-size:1vw;
+  }
+}
+
+@media screen and (max-width:670px) {
+    .headerSearchInput{
+      font-size: 2vw;
+    }
+    .headerSearchText{
+      font-size:2vw;
+    }
+}
+
+@media screen and (max-width:440px) {
+  .headerSearchInput{
+    font-size: 2.5vw;
+  }
+  .headerSearchText{
+    font-size:2.5vw;
+  }
+
+  .headerSearch {
+    /* height: 1vw; */
+    background-color: white;
+    border: 0.25vw solid #c0b630;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2.7vh 0px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    max-width: 86vw;
+    height: 5vw;
+}
+.headerContainer{
+  max-width: 84%;
+}
 }

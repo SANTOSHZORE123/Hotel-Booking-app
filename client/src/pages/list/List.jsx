@@ -37,7 +37,7 @@ return number;
       <div className="listContainer">
         <div className="listWrapper">
           <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
+            <h1 className="lsTitle">Search Panel</h1>
             <div className="lsItem">
               <label>Destination</label>
               <input placeholder={destination} onChange={(e) => setDestination(e.target.value.toLowerCase())}type="text" />

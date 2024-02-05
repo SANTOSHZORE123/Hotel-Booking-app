@@ -83,7 +83,6 @@ const RoomPanel = () => {
           <td>{item.price}&#8377;</td>
           <td>
             <button className="blow-up-button" onClick={() => setIsDeleteOpen({ isopen: true, cred:{id:item._id,hotelId:item.hotelId}})}>
-              <div className="icon">&#128065;</div>
             </button>
           </td>
         </tr>

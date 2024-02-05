@@ -111,7 +111,6 @@ const UserPanel = () => {
           </td>
           <td>
             <button className="blow-up-button" onClick={()=>clickHandler(item._doc._id,item._doc.username)}>
-              <div className="icon">&#128065;</div>
             </button>
           </td>
         </tr>
