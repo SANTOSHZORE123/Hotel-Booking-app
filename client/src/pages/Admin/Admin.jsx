@@ -53,7 +53,7 @@ const Admin = () => {
           </div>
           <div className='main_admin' style={{ display: isNavbarVisible ? 'flex' : 'none' }}>
             <img className="ima" src="/Profile.jpg" alt="" value="welcome" onClick={HandleClick}/>
-            Welcome, {user}!
+            <p style={{textAlign:"center"}}>Welcome, {user}!</p>
             <h4 style={{ marginTop: "15px" }}>Admin Panel</h4>
             <div className='admin-container'>
               <div onClick={(e)=>HandleClick(e)} value="User">

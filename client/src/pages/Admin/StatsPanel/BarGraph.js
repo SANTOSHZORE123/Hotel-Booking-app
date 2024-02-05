@@ -11,6 +11,7 @@ function BarGraph() {
     try{
       const res=await axios.get("/registrations/count")
       setlodind(false)
+      console.log("this is registrations/date",res.data)
       setData(res.data)
     }catch(error){
       setlodind(false)
