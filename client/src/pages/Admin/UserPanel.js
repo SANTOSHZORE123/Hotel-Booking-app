@@ -38,6 +38,7 @@ const UserPanel = () => {
     }
 
     const handleSubmit=async(id,user)=>{
+      console.log("this is actual names",user,authusername)
         setloading(true)
         try{
             const res=await axios.delete(`/users/${id}`)
