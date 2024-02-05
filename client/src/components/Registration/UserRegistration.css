@@ -1,0 +1,47 @@
+/* Style for the blow-up button */
+
+
+.blow-up-button {
+    background-color: #3498db; /* Blue color */
+    width:4vw;
+    height:2.5vw;
+    color: #fff; /* White text color */
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 20px;
+  }
+  
+  .icon{
+    font-size: 2vw;
+  }
+
+  .pdf-icon:hover {
+    text-decoration: underline;
+  }
+  
+
+  button:hover,
+  button:active {
+    background-color: #ffe6dc;
+  }
+  
+  .submit {
+    border: 1px solid #5a1a01;
+    background-color: #5a1a01;
+    color: white;
+  }
+  
+  .submit:hover,
+  .submit:active {
+    background-color: #7a2706;
+  }
+  
+  
+  

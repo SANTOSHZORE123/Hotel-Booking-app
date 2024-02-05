@@ -1,7 +1,6 @@
 import "./hotel.css";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
-import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,7 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 import Reserve from "../../components/reserve/Reserve";
-
+import DescriptionWithReadMore from "../../components/ReadMore/ReadMore"
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -29,15 +28,16 @@ const Hotel = () => {
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
+  console.log(dates)
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-    const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-    return diffDays;
+    let diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
+    return diffDays+1;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dates.length>0?dayDifference(dates[0].endDate, dates[0].startDate):dayDifference(new Date(),new Date());
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -108,7 +108,7 @@ const Hotel = () => {
               Excellent location – {data.distance}m from center
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.chepestPrice} at this property and get a
+              Book a stay over RS.{data.chepestPrice} at this property and get a
               free airport taxi
             </span>
             <div className="hotelImages">
@@ -126,7 +126,7 @@ const Hotel = () => {
             <div className="hotelDetails" >
               <div className="hotelDetailsTexts">
                 <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">{data.desc}</p>
+                {data.desc&&<DescriptionWithReadMore desc={data.desc}/>}
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
@@ -135,18 +135,17 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.chepestPrice * options.room}</b> ({days}{" "}
+                  <b>RS.{days * data.chepestPrice}</b> ({days}{" "}
                   nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
-          <MailList />
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id}/>}
+      {openModal && <Reserve HotelName={data.name} Location={data.address} Payment={days * data.chepestPrice}setOpen={setOpenModal} hotelId={id}/>}
     </div>
   );
 };

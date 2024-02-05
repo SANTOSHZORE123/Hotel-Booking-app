@@ -12,13 +12,14 @@ const useFetch = (url) => {
       try {
         const res = await axios.get(url);
         setData(res.data);
+        console.log("this is while setting",res.data)
       } catch (err) {
         setError(err);
       }
       setLoading(false);
     };
     fetchData();
-  }, [url]);
+},[url]);
 
   const reFetch = async () => {
     setLoading(true);
@@ -31,7 +32,7 @@ const useFetch = (url) => {
     }
     setLoading(false);
   };
-
+  console.log("this is while returning",data)
   return { data, loading, error, reFetch };
 };
 

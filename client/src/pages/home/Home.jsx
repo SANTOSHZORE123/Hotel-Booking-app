@@ -9,19 +9,19 @@ import "./home.css";
 
 const Home = () => {
   return (
-    <span>
+    <div>
       <Navbar />
       <Header/>
       <div className="homeContainer">
+      <h1 style={{textAlign:"center"}}className="homeTitle">Browse by Famous city</h1>
         <Featured/>
         <h1 style={{textAlign:"center"}}className="homeTitle">Browse by property type</h1>
         <PropertyList/>
         <h1 style={{textAlign:"center"}} className="homeTitle">Homes guests love</h1>
         <FeaturedProperties/>
-        <MailList/>
         <Footer/>
       </div>
-    </span>
+    </div>
   );
 };
 

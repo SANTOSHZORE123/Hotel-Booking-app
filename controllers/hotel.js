@@ -1,31 +1,78 @@
 import Hotel from "../models/Hotel.js";
 import Room from "../models/Room.js";
-
+import Registration from "../models/Registration.js"
 export const createHotel = async (req, res, next) => {
+  console.log(req.body)
   const newHotel = new Hotel(req.body);
-
   try {
+
     const savedHotel = await newHotel.save();
-    res.status(200).json(savedHotel);
+    res.status(200).json({message:"Hotel Created successfully"});
   } catch (err) {
-    next(err);
+    res.status(400).json({message:"Opps! Hotel can't created"});
   }
 };
 export const updateHotel = async (req, res, next) => {
   try {
+
+    const prevHotelDetails = await Hotel.findById(req.params.id);
     const updatedHotel = await Hotel.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
     );
-    res.status(200).json(updatedHotel);
+
+    await Room.updateMany(
+      { Hotel: req.params.id },
+      { $set: { price: req.body.chepestPrice } } // Update with the new minimum price of the hotel, you may adjust this according to your requirements
+    );
+
+    const regis = await Registration.find({ Hotel: prevHotelDetails.name, Location: prevHotelDetails.address });
+      console.log("this is previuos",prevHotelDetails,"this is now",regis)
+    for (const reg of regis) {
+      try {
+        const newPayment = reg.stayDuration.length * req.body.chepestPrice;
+        await Registration.findByIdAndUpdate(reg._id, { $set: { Hotel: req.body.name, Location: req.body.address, Payment: newPayment } });
+      } catch (error) {
+        console.error("Error updating registration:", error);
+        // Handle error or log as needed
+      }
+    }
+
+    
+    res.status(200).json({message:"hotel details updated successfully"});
   } catch (err) {
-    next(err);
+    res.status(400).json({message:"error while updating Hotel details"});
   }
 };
 export const deleteHotel = async (req, res, next) => {
   try {
-    await Hotel.findByIdAndDelete(req.params.id);
+    //fetching hotel
+    const hotel=await Hotel.findById(req.params.id);
+
+    //fetching all room ids present in rooms array of hotel
+    const roomIDs=hotel.rooms;
+
+    //deleting registrations for given room
+    for(const room of roomIDs){
+      try{
+        await Registration.deleteMany({room_id:room})
+      }catch(error){
+
+      }
+    }
+
+    //deleting rooms itself
+    for(const room of roomIDs){
+      try{
+        await Room.findByIdAndDelete(room)
+      }catch(error){
+
+      }
+    }
+
+    //deleting hotel
+    await Hotel.findByIdAndDelete(req.params.id)
     res.status(200).json("Hotel has been deleted.");
   } catch (err) {
     next(err);
@@ -46,7 +93,7 @@ export const getHotels = async (req, res, next) => {
 
       const hotels = await Hotel.find({
        ...others,
-        chepestPrice: { $gt: min || 1, $lt: max || 100}
+        chepestPrice: { $gte: min || 1, $lte: max || 10000000}
       }).limit(req.query.limit);
       res.status(200).json(hotels);
     }
@@ -76,10 +123,10 @@ export const countByCity = async (req, res, next) => {
 export const countByType = async (req, res, next) => {
   try {
     const hotelCount = await Hotel.countDocuments({ type: "hotel" });
-    const apartmentCount = await Hotel.countDocuments({ type: "apartment" });
-    const resortCount = await Hotel.countDocuments({ type: "resort" });
-    const villaCount = await Hotel.countDocuments({ type: "villa" });
-    const cabinCount = await Hotel.countDocuments({ type: "cabin" });
+    const apartmentCount = await Hotel.countDocuments({ type: "apartments" });
+    const resortCount = await Hotel.countDocuments({ type: "resorts" });
+    const villaCount = await Hotel.countDocuments({ type: "villas" });
+    const cabinCount = await Hotel.countDocuments({ type: "cabins" });
 
     res.status(200).json([
       { type: "hotel", count: hotelCount },

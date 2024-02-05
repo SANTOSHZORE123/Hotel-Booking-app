@@ -8,12 +8,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto; /* Make the container scrollable */
 }
 
 .rContainer {
   background-color: white;
   padding: 20px;
   position: relative;
+  max-width: 80%; /* Adjust as needed */
+  max-height: 80%; /* Adjust as needed */
+  overflow: auto; /* Enable scrolling for content exceeding container size */
 }
 
 .rClose {
@@ -26,6 +30,7 @@
 .rItem {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 50px;
   padding: 20px;
 }

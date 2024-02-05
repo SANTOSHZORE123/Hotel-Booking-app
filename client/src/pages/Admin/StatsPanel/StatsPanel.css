@@ -1,0 +1,39 @@
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    margin-top: 5%;
+  }
+  
+  .stat-container {
+    text-align: center;
+  }
+  
+  .title {
+    margin-top: 3px;
+    font-style: italic;
+    color: gray;
+  }
+  
+  .value {
+    font-size: 24px;
+  }
+  
+  .line {
+    width: 23%;
+    margin: auto;
+    border-top: 1px solid rgb(68, 55, 67); /* Change the color to a lighter shade */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Adjust the values for the shadow as needed */
+  }
+
+  .MoreStats{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:30px;
+    align-items: center;
+  }
+  
+  
+  

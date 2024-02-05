@@ -1,0 +1,53 @@
+.ima{
+    height: 45px;
+    width: 45px;
+    border: 1px solid #44447b ;
+    border-radius: 25px;
+
+}
+
+.admin-container div img{
+    height: 20px;
+    width: 20px;
+    border: 1px solid #44447b ;
+    border-radius: 25px;
+}
+
+.admin-container div {
+    margin: 20px 0px 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.admin-container h5{
+    display: inline;
+}
+
+.main_admin{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5vh;
+    height: 85vh;
+    width: 170px;
+    background-color:#44447b ;
+}
+
+  
+
+
+.maindiv{
+    display: flex;
+    max-width: 100vw;
+    overflow-x: scroll;
+}
+
+.left{
+    z-index: 2;
+}
+
+.right{
+    width: 100%;
+}

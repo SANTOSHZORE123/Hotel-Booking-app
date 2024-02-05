@@ -1,0 +1,15 @@
+/* Hide the scrollbar */
+body {
+    overflow-y: scroll; /* Always show vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+/* Optional: Customize scrollbar styles */
+::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar in Webkit browsers */
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: none;
+}

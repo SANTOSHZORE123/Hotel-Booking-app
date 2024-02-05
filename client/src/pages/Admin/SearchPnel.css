@@ -1,0 +1,12 @@
+.searchContainer{
+    width:50vw;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px auto 0px auto;
+}
+.searchHotel{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}

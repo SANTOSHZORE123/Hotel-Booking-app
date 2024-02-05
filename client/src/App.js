@@ -9,7 +9,8 @@ import List from "./pages/list/List";
 import Login from "./pages/login/Login";
 import SignUp from "./pages/signup/signup";
 import Admin from "./pages/Admin/Admin";
-
+import MyBooking from "./pages/MyBooking/MyBooking";
+import Stats from "./pages/Stats/Stats";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,8 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/adminpanel" element={<Admin/>}/>
+        <Route path="/mybookings" element={<MyBooking/>}/>
+        <Route path="/Stats" element={<Stats/>}/>
       </Routes>
     </BrowserRouter>
   );

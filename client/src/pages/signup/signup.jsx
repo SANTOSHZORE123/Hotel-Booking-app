@@ -83,15 +83,6 @@ const SignUp = () => {
           onChange={handleChange}
           className="lInput"
         />
-        
-
-        <select name="isAdmin" id="isAdmin"onChange={handleChange} defaultValue="Administrator">
-        <option value="Administrator" disabled>Administrator</option>
-        <option value="YES">YES</option>
-        <option value="NO">NO</option>
-        </select>
-
-
 
         <input
           type="password"

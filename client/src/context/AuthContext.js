@@ -1,10 +1,10 @@
 import { createContext, useEffect, useReducer } from "react";
 
 const INITIAL_STATE = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   loading: false,
   error: null,
-  isAdmin:false
+  isAdmin:JSON.parse(localStorage.getItem("isAdmin"))||false
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -19,11 +19,12 @@ const AuthReducer = (state, action) => {
         isAdmin:false
       };
     case "LOGIN_SUCCESS":
+      console.log("this",action.payload)
       return {
         user: action.payload.username,
         loading: false,
         error: null,
-        isAdmin:action.payload.isAdmin=="NO"?false:true
+        isAdmin:action.payload.isAdmin===false||action.payload.isAdmin==='false'?false:true
       };
     case "LOGIN_FAILURE":
       return {
@@ -46,6 +47,12 @@ const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(state.user));
+    localStorage.setItem("isAdmin", JSON.stringify(state.isAdmin));
+  }, [state.user]);
+
   return (
     <AuthContext.Provider
       value={{

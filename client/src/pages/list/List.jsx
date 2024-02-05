@@ -16,9 +16,7 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
-
-  const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination.toLowerCase()}&min=${min|| 1 }&max=${max||999}`
+  const { data, loading, error, reFetch } = useFetch(`/hotels?city=${destination.toLowerCase()}&min=${min|| 1 }&max=${max||100000}`
   );
 const sizecal=(data)=>{
 const number=0;
@@ -117,7 +115,7 @@ return number;
               "loading"
             ) : (
               <>
-                {data.length===0?(<h4 style={{color:"black"}}>Requested Destination Hotels are not yet Registered kindly chose Destination between satara ,pune or mumbai.</h4>):data.map((item) => (
+                {data.length===0?(<h4 style={{color:"black"}}>Requested Hotels are not yet Registered kindly change your preference</h4>):data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
               </>

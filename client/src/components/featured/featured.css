@@ -1,19 +1,24 @@
 .featured{
   width: 100%;
-  max-width: 75vw;
+  max-width: 95vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 3vw;
   z-index: 1;
 }
-
 .featuredItem{
   position: relative;
   color: white;
   border-radius: 10px;
   overflow: hidden;
-  height: 20vw;
-  flex:1
+  height: 300px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.featuredItem:hover {
+  transform: scale(1.05); /* Move 50px to the right when hovered over */
 }
 
 .featuredImg{
@@ -26,5 +31,16 @@
   position: absolute;
   bottom: 20px;
   left: 20px;
-  font-size:1.25vw;
+  font-size: small;
 }
+  @media screen and (max-width:835px) {
+    .featuredItem{
+      position: relative;
+      color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 200px;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+  }

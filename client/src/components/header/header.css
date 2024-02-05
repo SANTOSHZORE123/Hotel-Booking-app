@@ -1,5 +1,5 @@
 .header {
-  background-color: #0c8b00;
+  background-color: #44447b;
   color: white;
   display: flex;
   justify-content: center;
@@ -16,31 +16,13 @@
   margin: 1% 0px 0px 0px;
 }
 
-.headerList {
-  display: flex;
-  gap: 5%;
-  margin-bottom: 5%;
-  flex-wrap:wrap;
-}
-
-.headerListItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.headerListItem.active {
-  border: 1px solid white;
-  padding: 0.85%;
-  border-radius: 20px;
-}
 
 .headerDesc {
   margin: 15px 0px;
 }
 
 .headerBtn {
-  background-color: #0c8b00;
+  background-color: #44447b;
   color: white;
   font-weight: 500;
   border: none;
