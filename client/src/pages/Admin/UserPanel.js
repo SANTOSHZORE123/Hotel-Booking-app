@@ -110,8 +110,7 @@ const UserPanel = () => {
             )}
           </td>
           <td>
-            <button className="blow-up-button" onClick={()=>clickHandler(item._doc._id,item._doc.username)}>
-            </button>
+            <FaTimesCircle size={20} style={{cursor:"pointer"}} className="non-admin-icon" onClick={()=>clickHandler(item._doc._id,item._doc.username)}/>
           </td>
         </tr>
       ))}

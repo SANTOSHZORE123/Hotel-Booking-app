@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import UpdateModal from '../UpdateModal/UpdateModal'; // Make sure to provide the correct path to UpdateModal
 import Modal from '../UpdateModal/Modal';
 import axios from "axios"
+import { FaTimesCircle } from 'react-icons/fa';
 import { AuthContext } from "../../context/AuthContext"
 import { Document, Page, Text, PDFDownloadLink ,pdf} from '@react-pdf/renderer';
 import { FaFilePdf } from 'react-icons/fa';
@@ -212,8 +213,7 @@ const UserRegistration = (props) => {
           </button>
         </td>
         <td>
-          <button className="blow-up-button" onClick={(e)=>setIsDeleteOpen({isopen:true,eventVar:e})}>
-          </button>
+          <FaTimesCircle size={20} style={{color:"red",cursor:"pointer"}} onClick={(e)=>setIsDeleteOpen({isopen:true,eventVar:e})}/>
         </td>
 
         {/* Add the Download button with PDF generation functionality */}

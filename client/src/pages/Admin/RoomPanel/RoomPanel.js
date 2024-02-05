@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import "./RoomPanel.css"
 import SearchPanel from '../SearchPanel';
+import { FaTimesCircle } from 'react-icons/fa';
 import Modal from "../../../components/UpdateModal/Modal"
 
 import "./RoomPanel.css"
@@ -82,8 +83,8 @@ const RoomPanel = () => {
           <td>{item.address}</td>
           <td>{item.price}&#8377;</td>
           <td>
-            <button className="blow-up-button" onClick={() => setIsDeleteOpen({ isopen: true, cred:{id:item._id,hotelId:item.hotelId}})}>
-            </button>
+
+            <FaTimesCircle size={20} style={{color:"red",cursor:"pointer"}} onClick={() => setIsDeleteOpen({ isopen: true, cred:{id:item._id,hotelId:item.hotelId}})}/>
           </td>
         </tr>
       ))}

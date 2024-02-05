@@ -7,11 +7,14 @@ import axios from "axios"
 function StatContainer({ title, value }) {
   const [displayedValue, setDisplayedValue] = useState(0);
   const [base, setBase] = useState(value);
-
+  
   const fetchData = async () => {
     try {
       const res = await axios.post("/rooms/stats", { title: title });
       setDisplayedValue(res.data);
+      if(title === "Total payment received"){
+        setBase(res.data);
+      }
     } catch (error) {
       setDisplayedValue(title === "Total payment received" ? 2000 : 50);
     }
@@ -23,7 +26,7 @@ function StatContainer({ title, value }) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (base !== displayedValue) {
+      if (base < displayedValue) {
         setBase(prevBase => prevBase + 1);
       }
     }, 5);

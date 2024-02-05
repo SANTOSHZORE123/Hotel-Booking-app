@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import "./UserPanel.css"
+import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import SearchPanel from './SearchPanel';
 import Modal from "../../components/UpdateModal/Modal"
 import Slider from '../../components/ImgSlider';
@@ -94,8 +95,7 @@ const HotelPanel = () => {
             </button>
           </td>
           <td>
-            <button className="blow-up-button" onClick={() => setIsDeleteOpen({ isopen: true, id: item._id })}>
-            </button>
+            <FaTimesCircle size={20} style={{color:"red",cursor:"pointer"}} onClick={() => setIsDeleteOpen({ isopen: true, id: item._id })}/>
           </td>
           {view&&<Modal onClose={()=>setView(false)}>
             <Slider photos={item.photos}/>

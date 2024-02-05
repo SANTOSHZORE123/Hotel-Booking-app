@@ -45,3 +45,9 @@
   cursor: pointer;
   color: #0c8b00;
 }
+
+@media screen and (max-width:431px){
+  .navbar{
+    height: 26vh;
+  }
+}
