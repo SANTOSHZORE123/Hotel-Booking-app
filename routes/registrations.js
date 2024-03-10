@@ -8,19 +8,20 @@ import {
     getReceiptCount
 } from "../controllers/registration.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
+import {verifyUser} from "../utils/verifyToken.js"
 
 const router = express.Router();
 //GET ALL
 
-router.post("/",getRegistration);
+router.post("/",verifyUser,getRegistration);
 
-router.post("/update",UpdateRegistration)
+router.post("/update",verifyUser,UpdateRegistration)
 
-router.post("/delete",DeleteRegistration)
+router.post("/delete",verifyUser,DeleteRegistration)
 
 router.get("/regispercity",regispercity)
 
 router.get("/count",getRegistrationCount)
 
-router.get("/data/:id",getReceiptCount)
+router.get("/data/:id",verifyUser,getReceiptCount)
 export default router;

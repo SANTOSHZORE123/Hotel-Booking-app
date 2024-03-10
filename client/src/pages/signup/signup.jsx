@@ -31,7 +31,7 @@ const SignUp = () => {
     try{
       const res = await axios.post("/auth/register", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      navigate("/")
+      navigate("/login")
     } catch (err) {
         console.log(err)
       dispatch({ type: "LOGIN_FAILURE", payload: "Something Went Wrong" });
